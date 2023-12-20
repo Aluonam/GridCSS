@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: grid;
+    height: 100vh;
+    grid-gap: 10px;
+
+    /*después de poner los nombres abajo especificamos la posicion de las areas para mobile*/
+    grid-template-areas:
+    "header"
+    "izquierda"
+    "contenido"
+    "derecha"
+    "footer"
+    ;
+}
+
+main > * {
+    background-color: rgb(42, 163, 137);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Nombrar áreas de diseño o LAYOUT*/
+header { grid-area: header; }
+aside:first-of-type { grid-area: izquierda; } /*se puede hacer poniendo una clase (HTML <aside class="izquierda"> y poner aside.izquierda aqui)*/
+article { grid-area: contenido; }
+aside:last-of-type { grid-area: derecha; }
+footer { grid-area: footer; }
+
+@media (min-width: 900px){
+    main{
+        grid-template-areas: 
+        "footer" /* poner el footer arriba cuando se vea desde movil*/
+        "header"
+        "izquierda"
+        "contenido"
+        "derecha"
+        ;
+    }
+}
+
+@media (min-width: 1200px) {
+    main {
+        grid-template-areas:
+        "header header header"
+        "izquierda contenido derecha"
+        "footer footer footer"
+        ;
+        /*  otro LAYOUT  o diseño diferente:
+        grid-template-areas:
+        "header header derecha"
+        "izquierda contenido derecha"
+        ". footer ."
+        ;
+        */
+
+        /*para que header y footer ocupen menos*/
+        grid-template-rows: 1fr 6fr 1fr; /*digo que por FILAS el header ocupe 1fr, izq-content-derecha 6fr y el footer 1fr*/
+        grid-template-columns: 2fr 6fr 2fr;
+    }
+}
