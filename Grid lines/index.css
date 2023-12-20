@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+main{
+    height: 100vh; /*tamaño habitual de una web*/
+    display: grid; /*activamso grid*/
+    grid-gap: 10px;
+
+    grid-template-columns:
+    [siderbar-start] 1fr/* siderbar es BARRA LATERAL: nombre que le doy a la primera linea previa a la columna*/
+    [siderbar-end contenido-start] 2fr
+    [contenido-end];
+
+    grid-template-rows: /*filas*/
+    [header-start] 1fr
+    [header-end contenido-start] 2fr /*especificamos donde empieza y termina cada caja, ya qwue los nombres que hemos puesto son para las lineas entre las cajas*/
+    [contenido-end footer-start] 1fr
+    [footer-end];
+}
+
+main > *{
+    background-color: orange;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header{
+    grid-column: siderbar-start / -1; /*menos 1 es que llegue hasta el final o contenido-end*/
+    grid-row: header-start / header-end;
+}
+
+article{
+    grid-column: contenido-start / contenido-end;
+    grid-row: contenido-start / contenido-end;
+}
+
+aside{
+    grid-row: contenido-start / -1; /*porque empieza en una fila y acaba en el final o footer-end*/
+    grid-column: siderbar-start / siderbar-end;
+}
+
+footer{
+    grid-column: contenido-start / contenido-end; /*para asegurarnos de que el footer no cambia*/
+    grid-row: footer-start / footer-end;
+}
