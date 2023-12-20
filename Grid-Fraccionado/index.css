@@ -1,0 +1,33 @@
+main{
+    height: 100vh;
+    display: grid;
+    grid-gap: 10px; /*no me funciona*/
+    grid-template-columns: auto auto auto auto; /*4 columnas*/
+    grid-template-rows: auto auto auto; /*3 filas*/
+}
+
+div{
+    display: flex; /*FLEXBOX es compatible con grid que lo hemos puesto arriba*/
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+div:nth-child(10){ /*Numero de celda que voy a modificar*/
+    background-color: rgb(168, 195, 113);
+    /*
+    grid-column-start: 2; /*en que columna queremos que empiece la celda*/
+    /*
+    grid-column-end: 5 ; /*en que columna queremos que acabe, cogerá todo el ancho del numero de columnas que le digamos*/
+    /*
+    grid-column-end: -1; para que empiece y acabe al final
+    */
+    /*para acortar:*/
+    grid-column: 3 / -1;
+} 
+
+div:nth-child(6){
+    grid-column: 2 / 3;
+    grid-row: 2 / 4;
+    background-color: yellowgreen;
+}
