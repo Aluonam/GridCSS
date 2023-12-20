@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-1{
+    display: grid;
+    height: 100vh;
+    grid-gap: 10px;
+
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+} 
+
+#grid-1 > div{
+    background-color: rgb(22, 122, 106);
+}
+
+/*hacemos el estilo del grid anidado, que puede hacerse o bien mandadno llamar al hijo o bien mandando llamar a la clase que tendremos que haber puesto en el quinto div*/
+#grid-1 > div:nth-child(5){
+    background-color: rgb(226, 243, 242);
+    display: block; /*para que se queden bloqueados*/
+}
+
+/*llamamos al grid 2*/
+#grid-2 {
+    display: grid;
+    grid-gap: 20px;
+    height: 100%; /*asi este grid ocupará de arriba a abajo, es decir que ocupet odo el largo*/
+
+    /*para poner columnas en esta parte, a mi no me gusta*/
+    /*
+    grid-template-columns: repeat(2, 1fr);
+    */
+}
+
+#grid-2 > div {
+    background-color: rgb(192, 182, 46);
+}
