@@ -1,0 +1,53 @@
+main{
+    display: grid;
+    height: 100vh;
+    grid-gap: 10px;
+
+    /*después de poner los nombres abajo especificamos la posicion de las areas*/
+    /*
+    grid-template-areas:{
+        "header header header"
+        "izquierda contenido derecha1"
+        "izquierda contenido derecha2"
+        "izquierda footer footer"
+        }
+    grid-template-rows:
+        [inicio] 1fr [contenido-start] 2fr 1fr 1fr [fin]
+        ;
+    
+    grid-template-columns:
+        [inicio] 1fr [contenido-start] 2fr 1fr [fin]
+    ;
+    */
+
+    grid-template:
+        /*Filas*/
+        [inicio] "header header header" 1fr
+        [Content-start] "izquierda contenido derecha1" 2fr"
+        "izquierda contenido derecha2" 1fr
+        "izquierda footer footer" 1fr [fin]
+        / 
+        /*esta barra hace que cambiemos de escribir filas a coluimnas*/
+        /*Columnas*/
+        [inicio] 1fr [contenido-start] 2fr 1fr [fin]
+    ;
+}
+
+main > * {
+    background-color: rgb(155, 163, 33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*nombramos las áreas (grid-areas): (hayq eu hacerlo antes de poner en main la posicion sino no llamamos a los nombres porque no los hemos creado)*/
+
+header { grid-area: header; }
+aside:first-of-type { grid-area: izquierda; }
+article { grid-area: contenido; }
+aside:nth-of-type(2) { grid-area: derecha1; } 
+/*llamamos con nth-of-type() especificamos la posicion del aside al que estamos llamando*/
+aside:last-of-type { grid-area: derecha2; }
+/*o nth-of-type(3) porq es el ultimo*/
+footer { grid-area: footer; }
+
