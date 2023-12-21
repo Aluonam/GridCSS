@@ -4,8 +4,8 @@
 }
 
 main{
-    height: 100vh; /*tamaño habitual de una web*/
-    display: grid; /*activamso grid*/
+    height: 100vh; 
+    display: grid; /*activando grid*/
     grid-gap: 10px;
 
     grid-template-columns:
@@ -15,7 +15,7 @@ main{
 
     grid-template-rows: /*filas*/
     [header-start] 1fr
-    [header-end contenido-start] 2fr /*especificamos donde empieza y termina cada caja, ya qwue los nombres que hemos puesto son para las lineas entre las cajas*/
+    [header-end contenido-start] 2fr /*especificamos donde empieza y termina cada caja, ya que los nombres que hemos puesto son para las lineas entre las cajas*/
     [contenido-end footer-start] 1fr
     [footer-end];
 }
@@ -27,22 +27,45 @@ main > *{
     justify-content: center;
     align-items: center;
 }
-header{
-    grid-column: siderbar-start / -1; /*menos 1 es que llegue hasta el final o contenido-end*/
+
+/* HEADER */
+header{ 
     grid-row: header-start / header-end;
+    grid-column: siderbar-start / -1; /*menos 1 es que llegue hasta el final o contenido-end*/
 }
 
+/* CONTENIDO */
 article{
-    grid-column: contenido-start / contenido-end;
     grid-row: contenido-start / contenido-end;
+    grid-column: contenido-start / contenido-end;
 }
 
+/* ASIDE */
 aside{
     grid-row: contenido-start / -1; /*porque empieza en una fila y acaba en el final o footer-end*/
     grid-column: siderbar-start / siderbar-end;
 }
 
+/* FOOTER */
 footer{
-    grid-column: contenido-start / contenido-end; /*para asegurarnos de que el footer no cambia*/
     grid-row: footer-start / footer-end;
+    grid-column: contenido-start / contenido-end; /*para asegurarnos de que el footer no cambia*/
 }
+
+@media (max-width: 500px), (max-height: 600px) {
+    header, article, aside, footer {
+        grid-column: 1 / -1; /* Utiliza el espacio completo de la cuadrícula en pantallas más pequeñas */
+    }
+    
+    aside {
+        grid-row: auto; /* Restablece la posición de la fila para que se coloque automáticamente debajo del article */
+    }
+    
+    footer {
+        grid-row: auto; /* Restablece la posición de la fila para que se coloque automáticamente debajo del aside */
+        min-height: 100px;
+    }
+    body {
+        overflow-y: scroll; /* Agrega un scroll vertical en el cuerpo de la página */
+    }
+  }
