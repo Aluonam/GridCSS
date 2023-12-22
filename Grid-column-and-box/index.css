@@ -18,11 +18,11 @@ main{
 
     grid-auto-flow: column dense; /*hace que se coloquen los cuadraditos y las columnas condensados¿???? si pongo row el scroll va hacia abajo si pongo column va de lado. HAY QUE PONER EL DENSE PARA RELLLENAR EL ESPACIO*/
 
-    overflow-x: auto;
   /* o por COLUMNAS:
     grid-auto-columns: repeat(autofit, minmax(150px, 1fr));
     grid-auto-flow: column dense;
  */
+ overflow-y: hidden;
 }
 
 div{
@@ -34,7 +34,7 @@ div{
     border-radius: 5px;
 }
 
-/*cada X NUMERO CAMBIAR DE COLOR*/
+/*caDA X NUMERO CAMBIAR DE COLOR*/
 
 div:nth-child(3n) {/*cada 3 div:*/
     background-color: rgb(173, 102, 20);
